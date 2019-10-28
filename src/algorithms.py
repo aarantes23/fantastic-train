@@ -6,7 +6,7 @@
     1 - Prim
     2 - Kruskal
 
-    # Developed by: aarantes23@outlook.com
+    Developed by: aarantes23@outlook.com
 """
 
 import math
@@ -30,7 +30,7 @@ def prim(graph):
 
     """
     # Create a list n -1 times
-    pai = [-1]*(graph.n)  
+    pai = [-1]*(graph.n)
     # Current cost of reaching the vertex from the root
     cost = [math.inf]*graph.n
     # Edges that will be part of the tree in the result
@@ -98,7 +98,9 @@ def kruskal(graph):
 
     i = 0  # Index
     e = 0  # Index
-    while e < ((graph.n)-1):
+    while e < (len(graphs_list)):
+        if (i == len(graphs_list)):
+            break
         # Step 2: Gets the vertex with less weight and increment
         # the index for next iteration
         u, v, w = graphs_list[i]

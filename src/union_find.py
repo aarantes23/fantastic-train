@@ -3,7 +3,7 @@
 """
     Check if adding a new edge to the tree will generate a looping.
 
-    # Developed by: aarantes23@outlook.com
+    Developed by: aarantes23@outlook.com
 """
 
 def union(parent, rank, x, y):

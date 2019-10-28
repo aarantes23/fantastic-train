@@ -3,7 +3,7 @@
 """
     A Class to represent a graph object.
     
-    # Developed by: aarantes23@outlook.com
+    Developed by: aarantes23@outlook.com
 """
 from collections import defaultdict
 
@@ -13,11 +13,13 @@ class Graph(object):
         Graph object. 
     """
 
-    def __init__(self, edges, vertexs_qnt, directed=False):
+    def __init__(self, edges, vertexs_qnt, edges_qnt, stations_, directed=False):
         self._graph = [[] for _ in range(vertexs_qnt)]
         self._directed = directed
         self.add_edges(edges)
         self.n = len(self._graph)
+        self.stations = [[] for _ in range(edges_qnt)]
+        self.add_stations(stations_)
         # Removes first position of the graph if its empty
         if len(self._graph[0]) == 0:
             del self._graph[0]
@@ -41,9 +43,16 @@ class Graph(object):
         if not self._directed:
             self._graph[v].append((u, w))
 
+    def add_stations(self, stations):
+        for v, w in stations:
+            self.add_station(v, w)
+
+    def add_station(self, v, w):
+        self.stations[v].append((w))
+
     def exist_edge(self, u, v):
         """ Check if there's a edge between 2 vertex """
         return v in [i for i, w in self._graph[u]] if len(self._graph) > u else -1
 
     def __str__(self):
-        return '{}({})'.format(self.__class__.__name__, str(self._graph))
+        return ('{}({})'.format(self.__class__.__name__, str(self._graph)))
